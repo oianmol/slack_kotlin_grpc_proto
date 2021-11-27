@@ -1,0 +1,56 @@
+message SKWorkspace {
+  required string name = 1;
+  required string image_url = 2;
+  required string subdomain = 3;
+  repeated SKChannel channels = 4;
+}
+
+message SKUserWorkspaces {
+  repeated SKWorkspace workspace = 1;
+}
+
+message SKUserChannels{
+  repeated SKChannel channels = 1;
+}
+
+message SKChannelUsers{
+  repeated SKUser users = 1;
+}
+
+message SKChannel {
+  repeated SKUser users = 1;
+  required string name = 2;
+  required bool is_private = 3;
+  required string description = 4;
+  optional string topic = 5;
+  required string channel_id = 6;
+  required bool is_starred = 7;
+}
+
+message SKUser {
+  required string name = 1;
+  required string username = 2;
+  required SKUserStatus status = 3;
+  required string title = 4;
+  optional string email = 5;
+  optional string location = 6;
+  optional string reporting_to = 7;
+  optional string team = 8;
+  optional string seniority = 9;
+  required string user_id = 10;
+}
+
+message SKUserStatus {
+  required string emoji = 1;
+  required string status = 2;
+}
+
+message Empty {
+
+}
+
+service SlackService {
+  rpc getWorkspaces(SKUser) returns (stream SKUserWorkspaces);
+  rpc getUsers(SKChannel) returns (stream SKChannelUsers);
+  rpc getUserChannels(SKUser) returns (stream SKUserChannels);
+}
