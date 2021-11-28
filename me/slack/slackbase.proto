@@ -50,7 +50,7 @@ message Empty {
 }
 
 service SlackService {
-  rpc getWorkspaces(SKUser) returns (stream SKUserWorkspaces);
-  rpc getUsers(SKChannel) returns (stream SKChannelUsers);
-  rpc getUserChannels(SKUser) returns (stream SKUserChannels);
+  rpc getWorkspaces(Empty) returns (stream SKUserWorkspaces);
+  rpc getUsers(Empty) returns (stream SKChannelUsers);
+  rpc getUserChannels(Empty) returns (stream SKUserChannels);
 }
