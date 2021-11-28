@@ -38,6 +38,7 @@ message SKUser {
   optional string team = 8;
   optional string seniority = 9;
   required string user_id = 10;
+  required string imageUrl = 11;
 }
 
 message SKUserStatus {
